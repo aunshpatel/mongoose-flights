@@ -4,8 +4,10 @@ module.exports = {
     index
 };
 
-function index(req, res) {
-    res.render('flights/index', {
-        flights: Flight.getAll()
-    });
+async function index(req, res) {
+    // res.render('flights/index', {
+    //     flights: Flight.getAll()
+    // });
+    const flights = await Flight.find({});
+    res.render('flights/index',{title:'All Flights', flights})
 }
