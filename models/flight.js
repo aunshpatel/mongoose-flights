@@ -16,8 +16,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const flightSchema = new Schema({
-  airline: String,
-  airport: String,
+  airline: {
+    type: String,
+    enum: ['Air India', 'Etihad', 'Emirates', 'Qatar']
+  },
+  airport: {
+    type: String,
+    enum: ['EWR', 'AMD', 'IAD', 'BOM', 'IGI']
+  },
   flightNo: {
     type: Number,
     min: 10,

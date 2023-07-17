@@ -1,13 +1,31 @@
 <%- include('../partials/header') %>
-    <!-- <h1>Flights</h1> -->
-    <h1><%= title %></h1>
-    <ul>
+    <!-- <ul>
       <% flights.forEach(function(t) { %>
         <li>
-          <%= t.flight %>
-            <!-- - 
-          <%= t.done ? 'done' : 'not done' %> -->
+          <%= t.airline %>
+          <%= t.flightNo %>
         </li>
       <% }); %>
-    </ul>
+    </ul> -->
+
+    <table id="list">
+      <thead>
+        <tr>
+          <th>Airline</th>
+          <th>Flight<br>Number</th>
+          <th>Airport</th>
+          <th>Departs At:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flights.forEach(function(f) { %>
+          <tr>
+            <td><%= f.airline %></td>
+            <td><%= f.flightNo %></td>
+            <td><%= f.airport %></td>
+            <td><%= f.departs %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
   <%- include('../partials/footer') %>
