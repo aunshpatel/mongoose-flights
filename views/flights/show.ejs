@@ -1,0 +1,37 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Airline Name: </div>
+  <div><%= flights.airline %></div>
+
+  <div>Flight Number:</div>
+  <div><%= flights.flightNo %></div>
+
+  <div>Departure Airport: </div>
+  <div><%= flights.departureAirport %></div>
+
+  <div>Departure Time:</div>
+  <div><%= flights.departs %></div>
+
+  <br><br><h2>Arrival Details</h2>
+  <form id="add-arrival-details" method="POST"
+    action="/flights/<%= flights._id %>/arrivalDetails">
+    <label>Arrival Date:</label>
+    <input type="datetime-local" name="arrivalDate"> 
+    <label>Arrival Airport:</label>
+     <select name="arrivalAirport">
+      <option value="EWR">Newark International Airport, New Jersey, USA (EWR)</option>
+      <option value="IAD">Dulles International Airport, Virginia, USA(IAD)</option>
+      <option value="AMD">Ahmedabad International Airport, Gujarat, India(AMD)</option>
+      <option value="BOM">Mumbai International Airport, Maharashtra, India(BOM)</option>
+      <option value="IGI">New Delhi International Airport, New Delhi, India(IGI)</option>
+    </select>
+    <input type="submit" value="Add Arrival Details">
+  </form>
+
+  
+
+
+</section>
+
+<%- include('../partials/footer') %>
