@@ -7,11 +7,6 @@
 body {
   margin: 0;
   height: 100vh;
-  /* display: grid;
-  grid-template-rows: 50px 1fr;
-  grid-template-areas: 
-    "nav"
-    "main" */
 }
 
 body > nav {
