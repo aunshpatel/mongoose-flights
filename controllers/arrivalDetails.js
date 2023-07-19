@@ -5,16 +5,14 @@ module.exports = {
 };
 
 async function create(req, res) {
-  console.log(req.params.id);
-  const flight = await Flight.findById(req.params.id);
-  console.log(flight);
-  flight.arrivalDetails.push(req.body);
+  const flightArrival = await Flight.findById(req.params.id);
+  
+  flightArrival.destinations.push(req.body);
+  
   try {
-    // Save any changes made to the movie doc
-    await flight.save();
+    await flightArrival.save();
   } catch (err) {
-    console.log(err);
+    console.log('Err:'+err);
   }
-  // Step 5:  Respond to the Request (redirect if data has been changed)
-  res.redirect(`/flights/${flights._id}`);
+  res.redirect(`/flights/${flightArrival._id}`);
 }

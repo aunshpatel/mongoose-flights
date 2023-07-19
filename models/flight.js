@@ -1,17 +1,3 @@
-// const flights = [
-//   {flightNo: 1, airline: 'Air India', airport:"Ahmedabad", departs: new Date()},
-//   {flightNo: 2, airline: 'Etihad', airport:"Ahmedabad", departs: new Date()},
-//   {flightNo: 3, airline: 'Emirates', airport:"Ahmedabad", departs: new Date()}
-// ];
-
-// module.exports = {
-//   getAllFlights
-// };
-
-// function getAllFlights() {
-//   return flights;
-// }
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -20,7 +6,7 @@ const destinationSchema = new Schema({
     type: String,
     enum: ['EWR', 'AMD', 'IAD', 'BOM', 'IGI']
   },
-  arrival: Date,
+  arrivalDate: Date,
 }, {
   timestamps: true,
 });

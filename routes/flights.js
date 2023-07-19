@@ -9,9 +9,9 @@ var flightsCtrl = require('../controllers/flights');
 router.get('/', flightsCtrl.index);
 // GET /flights/new
 router.get('/new', flightsCtrl.new);
-// POST /movies
-router.post('/', flightsCtrl.create);
-// GET /movies/:id (show functionality) MUST be below new route
+// GET /flights/:id (show functionality)
 router.get('/:id', flightsCtrl.show);
+// POST /flights
+router.post('/', flightsCtrl.create);
 
 module.exports = router;

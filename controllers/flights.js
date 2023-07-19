@@ -2,9 +2,9 @@ const Flight = require('../models/flight');
 
 module.exports = {
     index,
+    show,
     new: newFlight,
     create,
-    show,
 };
 
 async function index(req, res) {
