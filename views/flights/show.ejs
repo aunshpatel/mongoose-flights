@@ -14,11 +14,12 @@
   <div><%= flights.departs.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }) %>, <%= flights.departs.toLocaleTimeString() %></div>
 </section>
 
-<br><br><h2>Arrival Details</h2>
+  <br><br>
+  <h2>Arrival Details</h2>
   <form id="add-arrival-details" action="/flights/<%= flights._id %>" method="POST">
     <label>Arrival Date:</label>
     <input type="datetime-local" name="arrivalDate"> 
-
+    <br><br><br>
     <label>Arrival Airport:</label>
     <select name="arrivalAirport">
       <option value="EWR" selected>Newark International Airport, New Jersey, USA (EWR)</option>
@@ -27,7 +28,7 @@
       <option value="BOM">Mumbai International Airport, Maharashtra, India(BOM)</option>
       <option value="IGI">New Delhi International Airport, New Delhi, India(IGI)</option>
     </select>
-
+    <br><br><br>
     <input type="submit" value="Add Arrival Details">
   </form>
   
