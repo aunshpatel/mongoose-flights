@@ -14,10 +14,11 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const flights = await Flight.findById(req.params.id);
+  const flights = await Flight.findById(req.params.id).populate('ticket');
 
-  const seats = await Ticket.find({_id:{$nin:flights.ticket}}).sort('seat');
-  res.render('flights/show', { title: 'Flight Details', flights, seats });
+  const ticket = await Ticket.find({_id:{$nin:flights.ticket}}).sort('seat');
+
+  res.render('flights/show', { title: 'Flight Details', flights, ticket });
 }
 
 function newFlight(req, res) {

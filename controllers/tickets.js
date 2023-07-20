@@ -15,8 +15,6 @@ async function newTicket(req, res) {
 }
 
 async function create(req, res) {
-  req.body.seat = req.body.seat;
-  req.body.price = req.body.price;
   try {
     await Ticket.create(req.body);
   } catch (err) {
@@ -26,9 +24,10 @@ async function create(req, res) {
 }
 
 async function addToFlight(req, res) {
-  const flight = await Flight.findById(req.params.id);
-  flight.ticket.push(req.body.ticketID);
-  console.log('addToFlight:'+flight)
-  await flight.save();
-  res.redirect(`/flights/${flight._id}`);
+  const flights = await Flight.findById(req.params.id);
+  
+  flights.ticket.push(req.body.ticketId);
+  await flights.save();
+  
+  res.redirect(`/flights/${flights._id}`);
 }
