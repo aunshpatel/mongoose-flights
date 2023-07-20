@@ -12,7 +12,21 @@
 
   <div>Departure Time:</div>
   <div><%= flights.departs.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }) %>, <%= flights.departs.toLocaleTimeString() %></div>
+
+ 
+
 </section>
+
+<form id="add-per-to-cast" action="/flights/<%= flights._id %>/tickets" method="POST">
+  <select name="ticketId">
+    <!-- Emit an option for each performer -->
+    <%- console.log("FLIGHTS:"+flights) %>
+    <%-seats.map(p => 
+    `<option value="${p._id}"> ${p.seat}, $${p.price} </option>`
+  ).join(''); %>
+  </select>
+  <button type="submit">Add to Cast</button>
+</form>
 
   <br><br>
   <h2>Arrival Details</h2>

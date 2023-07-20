@@ -1,4 +1,5 @@
 const Flight = require('../models/flight');
+const Ticket = require('../models/ticket')
 
 module.exports = {
     index,
@@ -14,7 +15,9 @@ async function index(req, res) {
 
 async function show(req, res) {
   const flights = await Flight.findById(req.params.id);
-  res.render('flights/show', { title: 'Flight Details', flights });
+
+  const seats = await Ticket.find({_id:{$nin:flights.ticket}}).sort('seat');
+  res.render('flights/show', { title: 'Flight Details', flights, seats });
 }
 
 function newFlight(req, res) {
