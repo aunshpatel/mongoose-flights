@@ -8,8 +8,6 @@ module.exports = {
 };
 
 async function newTicket(req, res) {
-  //Sort performers by their name
-  //const tickets = await Ticket.find({}).sort('name');
   const tickets = await Ticket.find({}).sort('name');
   res.render('tickets/new', { title: 'Add New Ticket', tickets });
 }

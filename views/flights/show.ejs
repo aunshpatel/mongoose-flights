@@ -24,11 +24,11 @@
 
 <form id="add-per-to-cast" action="/flights/<%= flights._id %>/tickets" method="POST">
   <select name="ticketId">
-    <!-- Emit an option for each performer -->
     <%-ticket.map(p => 
     `<option value="${p._id}"> ${p.seat}, $ ${p.price} </option>`
   ).join(''); %>
   </select>
+
   <button type="submit">Add to List</button>
 </form>
 
@@ -37,6 +37,7 @@
   <form id="add-arrival-details" action="/flights/<%= flights._id %>" method="POST">
     <label>Arrival Date:</label>
     <input type="datetime-local" name="arrivalDate"> 
+
     <br><br><br>
     <label>Arrival Airport:</label>
     <select name="arrivalAirport">
@@ -46,29 +47,31 @@
       <option value="BOM">Mumbai International Airport, Maharashtra, India(BOM)</option>
       <option value="IGI">New Delhi International Airport, New Delhi, India(IGI)</option>
     </select>
+
     <br><br><br>
     <input type="submit" value="Add Arrival Details">
   </form>
   <br><br>
-<% if (flights.destinations.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Arrival Airport</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% flights.destinations.forEach(function(r) { %>
+
+  <% if (flights.destinations.length) { %>
+    <table>
+      <thead>
         <tr>
-          <td><%= r.arrivalDate.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }) %>, <%= r.arrivalDate.toLocaleTimeString() %></td>
-          <td><%= r.arrivalAirport %></td>
+          <th>Date</th>
+          <th>Arrival Airport</th>
         </tr>
-      <% }); %>
-    </tbody>
-  </table>
-<% } else { %>
-  <h5>No Destinations Assigned Yet</h5>
-<% } %>
+      </thead>
+      <tbody>
+        <% flights.destinations.forEach(function(r) { %>
+          <tr>
+            <td><%= r.arrivalDate.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }) %>, <%= r.arrivalDate.toLocaleTimeString() %></td>
+            <td><%= r.arrivalAirport %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h5>No Destinations Assigned Yet</h5>
+  <% } %>
 
 <%- include('../partials/footer') %>

@@ -27,7 +27,6 @@ function newFlight(req, res) {
 
 
 async function create(req, res) {
-  //airline, airport, flightNo, departs
   req.body.airline = req.body.airline;
 
   req.body.airport = req.body.airport;
